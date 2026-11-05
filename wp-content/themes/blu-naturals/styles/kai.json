@@ -1,0 +1,88 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Kai",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "#0B2A3A"
+        },
+        {
+          "slug": "blu",
+          "name": "Blu",
+          "color": "#1B5E8A"
+        },
+        {
+          "slug": "glass",
+          "name": "Sea glass",
+          "color": "#A9CFE0"
+        },
+        {
+          "slug": "mist",
+          "name": "Mist",
+          "color": "#E6EFF4"
+        },
+        {
+          "slug": "deep",
+          "name": "Deep mist",
+          "color": "#D6E5ED"
+        },
+        {
+          "slug": "paper",
+          "name": "Paper",
+          "color": "#F4F8FA"
+        },
+        {
+          "slug": "sand",
+          "name": "Sand",
+          "color": "#EFE9DF"
+        },
+        {
+          "slug": "accent",
+          "name": "Gold",
+          "color": "#C9A14F"
+        },
+        {
+          "slug": "accent-tint",
+          "name": "Gold tint",
+          "color": "#F3E9CF"
+        },
+        {
+          "slug": "night",
+          "name": "Night",
+          "color": "#071E2B"
+        },
+        {
+          "slug": "muted",
+          "name": "Muted text",
+          "color": "#4E6672"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "black",
+          "name": "Blakbird",
+          "color": "#1C1C1E"
+        }
+      ],
+      "gradients": [
+        {
+          "slug": "shoreline",
+          "name": "Shoreline",
+          "gradient": "linear-gradient(180deg, #F4F8FA 0%, #E6EFF4 60%, #D6E5ED 100%)"
+        },
+        {
+          "slug": "shoreline-diag",
+          "name": "Shoreline diagonal",
+          "gradient": "linear-gradient(160deg, #F4F8FA 0%, #E6EFF4 55%, #D6E5ED 100%)"
+        }
+      ]
+    }
+  }
+}

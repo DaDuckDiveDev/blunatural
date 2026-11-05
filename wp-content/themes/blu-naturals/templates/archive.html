@@ -1,0 +1,39 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"div"} /-->
+<!-- wp:group {"tagName":"main","className":"blu-main blu-journal","layout":{"type":"constrained","contentSize":"1180px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|50"}}}} -->
+<main class="wp-block-group blu-main blu-journal" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
+<!-- wp:paragraph {"className":"is-style-eyebrow"} -->
+<p class="is-style-eyebrow">The journal</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:query-title {"type":"archive","level":1} /-->
+
+<!-- wp:paragraph {"fontSize":"large","className":"blu-lead"} -->
+<p class="blu-lead has-large-font-size">What we are making, what goes into it, and how to get the most out of a stick of natural deodorant. Written by the family, not a marketing team.</p>
+<!-- /wp:paragraph -->
+<!-- wp:query {"queryId":1,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"className":"blu-posts"} -->
+<div class="wp-block-query blu-posts">
+<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:group {"className":"blu-post-card","layout":{"type":"constrained"}} -->
+<div class="wp-block-group blu-post-card">
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3","style":{"border":{"radius":"14px"}}} /-->
+<!-- wp:post-terms {"term":"category","className":"blu-eyebrow","fontSize":"x-small"} /-->
+<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /-->
+<!-- wp:post-excerpt {"excerptLength":22,"fontSize":"small"} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>The first letters are being written. Check back soon, or join the list in the footer.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+</div>
+<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"div"} /-->

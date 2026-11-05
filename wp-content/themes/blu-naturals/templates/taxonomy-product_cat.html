@@ -1,0 +1,59 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"div"} /-->
+
+<!-- wp:group {"tagName":"main","className":"blu-main blu-shop","layout":{"type":"constrained","contentSize":"1180px"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|50"}}}} -->
+<main class="wp-block-group blu-main blu-shop" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--50)">
+	<!-- wp:woocommerce/breadcrumbs {"fontSize":"x-small","className":"blu-crumbs"} /-->
+	<!-- wp:group {"className":"blu-shop__head","layout":{"type":"constrained","contentSize":"720px","justifyContent":"left"}} -->
+	<div class="wp-block-group blu-shop__head">
+		<!-- wp:query-title {"type":"archive","showPrefix":false,"level":1} /-->
+		<!-- wp:term-description {"className":"blu-lead","fontSize":"large"} /-->
+	</div>
+	<!-- /wp:group -->
+	<!-- wp:woocommerce/store-notices /-->
+
+	<!-- wp:group {"className":"blu-shop__bar","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group blu-shop__bar">
+		<!-- wp:woocommerce/product-filter-active {"className":"blu-filters-active"} /-->
+		<!-- wp:woocommerce/catalog-sorting {"fontSize":"small"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"menu_order","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"],"className":"blu-grid"} -->
+	<div class="wp-block-woocommerce-product-collection blu-grid">
+		<!-- wp:woocommerce/product-template {"className":"blu-card-list"} -->
+		<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true,"className":"blu-card__img"} -->
+			<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"right"} /-->
+		<!-- /wp:woocommerce/product-image -->
+		<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"large","__woocommerceNamespace":"woocommerce/product-collection/product-title","className":"blu-card__title"} /-->
+		<!-- wp:post-excerpt {"excerptLength":14,"fontSize":"small","className":"blu-card__sub","__woocommerceNamespace":"woocommerce/product-collection/product-summary"} /-->
+		<!-- wp:group {"className":"blu-card__row","layout":{"type":"flex","justifyContent":"space-between","verticalAlignment":"center"}} -->
+		<div class="wp-block-group blu-card__row">
+			<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"fontSize":"medium"} /-->
+			<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true,"fontSize":"x-small","className":"blu-card__btn"} /-->
+		</div>
+		<!-- /wp:group -->
+		<!-- /wp:woocommerce/product-template -->
+
+		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+		<!-- wp:query-pagination-previous /-->
+		<!-- wp:query-pagination-numbers /-->
+		<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination -->
+
+		<!-- wp:woocommerce/product-collection-no-results -->
+		<!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","flexWrap":"wrap"}} -->
+		<div class="wp-block-group">
+			<!-- wp:paragraph -->
+			<p>Nothing here yet. Try the deodorant.</p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:group -->
+		<!-- /wp:woocommerce/product-collection-no-results -->
+	</div>
+	<!-- /wp:woocommerce/product-collection -->
+
+	<!-- wp:pattern {"slug":"blu/trust-strip"} /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"div"} /-->

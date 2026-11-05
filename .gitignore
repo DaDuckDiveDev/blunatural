@@ -1,0 +1,34 @@
+# WordPress core is not in this repo (scripts/setup-local.sh downloads it; SiteGround installs it)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+wp-content/plugins/woocommerce/
+wp-content/plugins/sqlite-database-integration/
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+wp-content/plugins/index.php
+wp-content/themes/twenty*/
+wp-content/themes/index.php
+wp-content/db.php
+wp-content/database/
+wp-content/debug.log
+wp-content/upgrade/
+wp-content/uploads/*
+!wp-content/uploads/blu/
+wp-content/cache/
+
+# secrets
+scripts/.deploy.env
+*.pem
+id_*
+*.key
+
+# local
+node_modules/
+.DS_Store
+*.log
+/blunatural-wp/

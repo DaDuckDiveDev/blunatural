@@ -1,0 +1,474 @@
+<title>Blu Naturals Brand Rebuild</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,100&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a long-form brand proposal; sticky section nav; colorway switcher re-themes every token and swaps sample images. */
+:root{
+  --ink:#10364A; --blu:#2A7A96; --glass:#8FC7D6; --mist:#EAF3F6; --paper:#F7FAFB; --sand:#F3EEE6; --accent:#E8866A; --night:#0B2A3A; --deep:#DCEBF0; --link:#2A7A96;
+  --bg:var(--paper); --fg:var(--ink); --muted:#56707C; --line:rgba(16,54,74,.14); --card:#FFFFFF; --band:var(--mist); --warm:var(--sand);
+  --display:'Fraunces',Georgia,'Times New Roman',serif; --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --maxw:1120px; --r:14px;
+}
+:root[data-cw="kai"]{ --ink:#0B2A3A; --blu:#1B5E8A; --glass:#A9CFE0; --mist:#E6EFF4; --paper:#F4F8FA; --sand:#EFE9DF; --accent:#C9A14F; --night:#071E2B; --deep:#D6E5ED; --link:#1B5E8A; --muted:#4E6672; --line:rgba(11,42,58,.14) }
+:root[data-cw="lagoon"]{ --ink:#173A3F; --blu:#1FA3B5; --glass:#9ADFE6; --mist:#E3F4F3; --paper:#F6FBFB; --sand:#F4F0E8; --accent:#E05C7B; --night:#0F2D33; --deep:#D2EEEE; --link:#137585; --muted:#4F6C70; --line:rgba(23,58,63,.14) }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:var(--night); --fg:#E9F2F5; --muted:#A9BFC8; --line:rgba(233,242,245,.14); --card:#10364A; --band:#0F3344; --warm:#1A3D4D; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:var(--night); --fg:#E9F2F5; --muted:#A9BFC8; --line:rgba(233,242,245,.14); --card:#10364A; --band:#0F3344; --warm:#1A3D4D; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--link)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-variation-settings:"SOFT" 100,"opsz" 144}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-variation-settings:"SOFT" 100,"opsz" 144}
+h3{font-size:1.3rem;font-variation-settings:"SOFT" 100,"opsz" 60}
+h4{font-family:var(--body);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+p{margin:0 0 1em;max-width:68ch}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:64px;border-top:1px solid var(--line)}
+section.band{background:var(--band);border-top:0}
+.eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blu);margin-bottom:12px}
+.lead{font-size:1.15rem;max-width:62ch;color:var(--fg)}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0}
+.card h3{margin-bottom:10px}
+img{max-width:100%;height:auto;display:block}
+.note{background:var(--warm);border-radius:var(--r);padding:18px 22px;max-width:none}
+.note p:last-child{margin-bottom:0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+.tbl table{min-width:640px}
+code,.tok{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85em}
+ul{padding-left:1.2em;margin:0 0 1em}
+li{margin-bottom:.35em}
+li::marker{color:var(--blu)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.top .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.1rem;color:var(--fg);text-decoration:none;white-space:nowrap}
+.top .brand img{height:30px;width:auto}
+nav.sec{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+nav.sec::-webkit-scrollbar{display:none}
+nav.sec a{font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px;white-space:nowrap}
+nav.sec a:hover,nav.sec a:focus-visible{background:var(--band);color:var(--fg);outline:none}
+.cwbar{display:flex;align-items:center;gap:6px;margin-left:auto}
+.cwbar span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap}
+.cw{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--fg);font:600 .8rem var(--body);padding:6px 10px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.cw i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.cw[aria-pressed="true"]{border-color:var(--blu);box-shadow:0 0 0 2px var(--glass) inset}
+.cw:focus-visible{outline:2px solid var(--blu);outline-offset:2px}
+@media (max-width:760px){ .cwbar span{display:none} }
+
+/* hero */
+.hero{padding-block:56px 40px;border-top:0}
+.hero .logo-big{max-width:520px;margin:0 0 28px}
+.hero .logo-big img{width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:34px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.stat b{display:block;font-family:var(--display);font-size:1.9rem;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+.stat small{display:block;color:var(--muted);margin-top:6px;font-size:.82rem;line-height:1.35}
+
+/* logo sheet */
+.lsheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ltile{border:1px solid var(--line);border-radius:var(--r);background:#fff;display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;padding:10%;position:relative;min-width:0}
+.ltile img{max-height:100%;width:auto;max-width:100%}
+.ltile.dark{background:var(--night)}
+.ltile.blu{background:var(--blu)}
+.ltile.black{background:#1C1C1E}
+.ltile.mist{background:var(--mist)}
+.ltile figcaption{position:absolute;left:12px;bottom:10px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#6B7F88;font-weight:700}
+.ltile.dark figcaption,.ltile.blu figcaption,.ltile.black figcaption{color:rgba(255,255,255,.7)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.compare .ltile{aspect-ratio:auto;min-height:220px}
+@media (max-width:640px){.compare{grid-template-columns:1fr}}
+
+/* colorways */
+.cws{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.cwcard{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);display:flex;flex-direction:column;min-width:0}
+.cwcard .sw{display:grid;grid-template-columns:repeat(7,1fr);height:84px}
+.cwcard .sw i{display:block}
+.cwcard .body{padding:20px}
+.cwcard .pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--mist);color:var(--ink);margin-bottom:10px}
+.cwcard .pill.rec{background:var(--ink);color:#fff}
+.toks{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:.82rem;margin:12px 0}
+.toks div{display:flex;align-items:center;gap:8px;min-width:0}
+.toks i{width:14px;height:14px;border-radius:4px;flex:none;border:1px solid rgba(0,0,0,.08)}
+.toks span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cwcard img{width:100%}
+.cwcard .ui{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn{display:inline-block;font:600 .9rem var(--body);padding:10px 18px;border-radius:999px;text-decoration:none;border:1.5px solid transparent;cursor:pointer}
+.btn.p{background:var(--ink);color:#fff}
+.btn.s{border-color:var(--blu);color:var(--blu);background:transparent}
+.btn.a{background:var(--accent);color:var(--ink)}
+.cwcard[data-k="tidepool"] .btn.p{background:#10364A}.cwcard[data-k="tidepool"] .btn.s{border-color:#2A7A96;color:#2A7A96}.cwcard[data-k="tidepool"] .btn.a{background:#E8866A;color:#10364A}
+.cwcard[data-k="kai"] .btn.p{background:#0B2A3A}.cwcard[data-k="kai"] .btn.s{border-color:#1B5E8A;color:#1B5E8A}.cwcard[data-k="kai"] .btn.a{background:#C9A14F;color:#0B2A3A}
+.cwcard[data-k="lagoon"] .btn.p{background:#173A3F}.cwcard[data-k="lagoon"] .btn.s{border-color:#137585;color:#137585}.cwcard[data-k="lagoon"] .btn.a{background:#E05C7B;color:#fff}
+.cwcard .body p{font-size:.95rem}
+
+/* type */
+.typo{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+@media (max-width:760px){.typo{grid-template-columns:1fr}}
+.spec{font-family:var(--display);font-variation-settings:"SOFT" 100,"opsz" 144;font-weight:500;font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin-bottom:8px}
+.spec.it{font-style:italic;font-weight:400}
+.scale{display:grid;gap:8px}
+.scale div{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding:6px 0}
+.scale code{color:var(--muted);min-width:118px}
+
+/* imagery */
+.recipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.recipe figure{margin:0;min-width:0}
+.recipe figure img{border-radius:var(--r);background:var(--paper)}
+.recipe figcaption{font-size:.85rem;color:var(--muted);margin-top:8px}
+.steps{counter-reset:s}
+.steps li{list-style:none;position:relative;padding-left:40px;margin-bottom:12px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:50%;background:var(--blu);color:#fff;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pgrid img{border-radius:10px}
+/* mock storefront */
+.mock{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper);color:var(--ink)}
+.mock .mhead{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid rgba(16,54,74,.08);font-size:.85rem;font-weight:600}
+.mock .mhead img{height:26px}
+.mock .mhead nav{display:flex;gap:16px;color:var(--muted)}
+.mock .mhero{position:relative;background:var(--paper)}
+.mock .mhero img{width:100%}
+.mock .mcopy{position:absolute;left:6%;top:50%;transform:translateY(-50%);max-width:44%}
+.mock .mcopy h2{font-size:clamp(1.2rem,3.2vw,2.6rem);color:var(--ink);margin-bottom:10px}
+.mock .mcopy p{font-size:clamp(.7rem,1.4vw,1rem);color:var(--muted);margin-bottom:14px}
+.mock .mcopy .btn{font-size:clamp(.6rem,1.2vw,.9rem);padding:.6em 1.2em}
+.mock .ann{background:var(--ink);color:#fff;text-align:center;font-size:.78rem;padding:7px;letter-spacing:.04em}
+.mock .mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:22px}
+.mock .mprod{min-width:0}
+.mock .mprod img{width:100%;border-radius:12px}
+.mock .mprod h3{font-size:1rem;margin:10px 0 2px;color:var(--ink)}
+.mock .mprod small{color:var(--muted);display:block;font-size:.8rem}
+.mock .mprod .price{font-weight:700;font-size:.95rem;margin-top:6px;display:flex;justify-content:space-between;align-items:center}
+.mock .mprod .price .btn{font-size:.72rem;padding:6px 12px}
+@media (max-width:640px){.mock .mrow{grid-template-columns:1fr 1fr}.mock .mhead nav{display:none}}
+
+/* plan tables / flows */
+.flow{display:grid;gap:12px}
+.flow .step{display:grid;grid-template-columns:110px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.flow .step b{font-family:var(--display);font-weight:500;font-size:1.05rem}
+.flow .step .when{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blu)}
+.flow .step p{margin:4px 0 0;font-size:.93rem}
+@media (max-width:560px){.flow .step{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.95rem}
+.kv b{font-weight:700}
+.check li{list-style:none;padding-left:28px;position:relative}
+.check li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:14px;border:2px solid var(--blu);border-radius:4px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:999px;background:var(--mist);color:var(--ink);margin-right:4px}
+:focus-visible{outline:2px solid var(--blu);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+footer{padding-block:40px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+</style>
+
+<div class="top"><div class="wrap">
+  <a class="brand" href="#top"><img src="logo/blu-mark.svg" alt="">Brand rebuild</a>
+  <nav class="sec" aria-label="Sections">
+    <a href="#logo">Logo</a><a href="#colorways">Colorways</a><a href="#type">Type</a><a href="#imagery">Imagery</a><a href="#story">Family</a><a href="#blog">Blog & SEO</a><a href="#email">Email</a><a href="#social">Social</a><a href="#cta">CTAs</a><a href="#next">Decisions</a>
+  </nav>
+  <div class="cwbar" role="group" aria-label="Colorway">
+    <span>Colorway</span>
+    <button class="cw" data-cw="tidepool" aria-pressed="true"><i style="background:#2A7A96"></i>Tidepool</button>
+    <button class="cw" data-cw="kai" aria-pressed="false"><i style="background:#1B5E8A"></i>Kai</button>
+    <button class="cw" data-cw="lagoon" aria-pressed="false"><i style="background:#1FA3B5"></i>Lagoon</button>
+  </div>
+</div></div>
+
+<header class="hero wrap" id="top">
+  <div class="eyebrow">Blu Naturals · WooCommerce rebuild · proposal 1</div>
+  <div class="logo-big"><img src="logo/blu-naturals-horizontal.svg" alt="Blu Naturals: bluebird mark beside the wordmark"></div>
+  <h1>One bird, two lines, three ways to color it.</h1>
+  <p class="lead" style="margin-top:18px">A rebuilt identity for Blu Naturals and its men's line Blakbird, three blue colorways to choose between, every product photo re-cut so it dissolves into the page, and the content and email system that turns the new site into repeat orders. Use the colorway switcher at the top to re-theme this whole page.</p>
+  <div class="stats" aria-label="What four years of Shopify data say">
+    <div class="stat"><b>949</b><small>orders, Dec 2022 to Oct 2026</small></div>
+    <div class="stat"><b>$50</b><small>average order</small></div>
+    <div class="stat"><b>85%</b><small>of units are deodorant</small></div>
+    <div class="stat"><b>155</b><small>customers ordered twice or more</small></div>
+    <div class="stat"><b>125</b><small>orders came through one creator code (rewild)</small></div>
+    <div class="stat"><b>76 → 10</b><small>orders per month, Jun 2023 vs Sep 2026</small></div>
+  </div>
+  <p class="muted" style="margin-top:16px;font-size:.9rem">Source: the Shopify orders, customers and discounts exports in the project. The last row is the reason this rebuild has to do more than look better: deodorant is a 60-day consumable, so the growth plan below is built around replenishment and the creator channel that already worked once.</p>
+</header>
+
+<section id="logo"><div class="wrap">
+  <div class="eyebrow">01 · Logo</div>
+  <h2>The bluebird comes back, and it carries the old wave with it.</h2>
+  <p class="lead">The brand started as Blubird Naturals, and the men's line is still Blakbird, but the current mark is a turquoise brush swirl with no bird in it. The rebuild puts a single perched bluebird at the center. Blue, it is Blu Naturals. Near-black, it is Blakbird. The two curved lines on the wing are the white stripes from the old swirl, so the shelf customer who knows the turquoise label still sees something familiar.</p>
+  <div class="compare" style="margin:28px 0">
+    <figure class="ltile"><img src="img/old-logo.png" alt="Current Blu Naturals logo: turquoise brush swirl with script Blu and the word naturals"><figcaption>Before</figcaption></figure>
+    <figure class="ltile mist"><img src="logo/blu-naturals-stacked.svg" alt="New stacked logo: bluebird above the blu naturals wordmark"><figcaption>After</figcaption></figure>
+  </div>
+  <div class="lsheet">
+    <figure class="ltile"><img src="logo/blu-naturals-horizontal.svg" alt="Horizontal lockup"><figcaption>Primary · horizontal</figcaption></figure>
+    <figure class="ltile"><img src="logo/blu-naturals-stacked.svg" alt="Stacked lockup"><figcaption>Stacked · labels, social</figcaption></figure>
+    <figure class="ltile"><img src="logo/blu-mark-circle.svg" alt="Bird mark in a circle" style="max-height:70%"><figcaption>Avatar · favicon</figcaption></figure>
+    <figure class="ltile dark"><img src="logo/blu-naturals-horizontal-reversed.svg" alt="Reversed white lockup on deep navy"><figcaption>Reversed</figcaption></figure>
+    <figure class="ltile blu"><img src="logo/blu-naturals-stacked-reversed.svg" alt="Reversed stacked lockup on blue"><figcaption>Reversed · stacked</figcaption></figure>
+    <figure class="ltile"><img src="logo/blu-naturals-horizontal-mono.svg" alt="One-colour lockup"><figcaption>One colour · print, embossing</figcaption></figure>
+    <figure class="ltile"><img src="logo/blakbird-horizontal.svg" alt="Blakbird lockup: black bird beside the blakbird wordmark, by blu naturals"><figcaption>Blakbird · men's line</figcaption></figure>
+    <figure class="ltile"><img src="logo/blakbird-stacked.svg" alt="Blakbird stacked"><figcaption>Blakbird · stacked</figcaption></figure>
+    <figure class="ltile black"><img src="logo/blakbird-horizontal-reversed.svg" alt="Blakbird reversed"><figcaption>Blakbird · reversed</figcaption></figure>
+  </div>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card"><h3>How it is built</h3><p>Wordmark is Fraunces (soft axis) in lowercase, so it reads as handmade rather than clinical. The descriptor is Manrope, tracked wide. Everything is outlined paths, so the SVGs need no fonts installed. Minimum size: 24 px tall for the mark, 110 px wide for the horizontal lockup.</p></div>
+    <div class="card"><h3>Clear space and use</h3><p>Keep a margin equal to the bird's height around any lockup. On photos, use the reversed version over the dark end of the image or the one-colour version on a mist panel. Never put the bird on the old turquoise swirl, stretch it, or add a drop shadow.</p></div>
+    <div class="card"><h3>Blakbird stays in the family</h3><p>Same bird, same wordmark construction, ink instead of blue. On the current labels the men's line uses a hand-drawn crow that shares nothing with the parent brand. Now one shelf, one family.</p></div>
+  </div>
+</div></section>
+
+<section id="colorways" class="band"><div class="wrap">
+  <div class="eyebrow">02 · Colorways</div>
+  <h2>Three blues. Pick one, and the whole system follows.</h2>
+  <p class="lead">Each colorway is seven tokens: ink for text and buttons, blu for the mark and links, glass for highlights, mist and paper for backgrounds, sand for warm product panels, and one accent for badges and emphasis. Contrast ratios below are measured against the paper background. Switch the page with the buttons at the top to see each one applied to the logo, the hero and the product cards.</p>
+  <div class="cws">
+    <div class="cwcard" data-k="tidepool">
+      <div class="sw"><i style="background:#10364A"></i><i style="background:#2A7A96"></i><i style="background:#8FC7D6"></i><i style="background:#EAF3F6"></i><i style="background:#F7FAFB"></i><i style="background:#F3EEE6"></i><i style="background:#E8866A"></i></div>
+      <img src="img/card-deo-tidepool.jpg" alt="The Original deodorant on the Tidepool background">
+      <div class="body">
+        <span class="pill rec">Recommended</span>
+        <h3>Tidepool</h3>
+        <p>Deep sea ink, a true mid blue for the bird, sea-glass highlights, and a plumeria coral accent. Premium without going dark; the white tubes and kraft pouches sit naturally on it.</p>
+        <div class="toks">
+          <div><i style="background:#10364A"></i><span>ink <code>#10364A</code> 12.2:1</span></div><div><i style="background:#2A7A96"></i><span>blu <code>#2A7A96</code> 4.6:1</span></div>
+          <div><i style="background:#8FC7D6"></i><span>glass <code>#8FC7D6</code></span></div><div><i style="background:#EAF3F6"></i><span>mist <code>#EAF3F6</code></span></div>
+          <div><i style="background:#F7FAFB"></i><span>paper <code>#F7FAFB</code></span></div><div><i style="background:#F3EEE6"></i><span>sand <code>#F3EEE6</code></span></div>
+          <div><i style="background:#E8866A"></i><span>coral <code>#E8866A</code> ink on it 4.9:1</span></div><div><i style="background:#0B2A3A"></i><span>night <code>#0B2A3A</code></span></div>
+        </div>
+        <div class="ui"><a class="btn p" href="#cta">Add to cart</a><a class="btn s" href="#cta">Find your scent</a><span class="tag" style="background:#FBE3DA;color:#10364A">Subscribe &amp; save 15%</span></div>
+        <p style="margin-top:14px"><b>Trade-off:</b> the coral only works with ink text on it, never white, so it stays an accent and never becomes the main button.</p>
+      </div>
+    </div>
+    <div class="cwcard" data-k="kai">
+      <div class="sw"><i style="background:#0B2A3A"></i><i style="background:#1B5E8A"></i><i style="background:#A9CFE0"></i><i style="background:#E6EFF4"></i><i style="background:#F4F8FA"></i><i style="background:#EFE9DF"></i><i style="background:#C9A14F"></i></div>
+      <img src="img/card-deo-kai.jpg" alt="The Original deodorant on the Kai background">
+      <div class="body">
+        <span class="pill">Deeper · spa</span>
+        <h3>Kai</h3>
+        <p>Navy ink, ocean blue, cooler mist, and a muted gold accent. The most "luxury" of the three and the easiest on contrast: every pairing passes AA with room to spare.</p>
+        <div class="toks">
+          <div><i style="background:#0B2A3A"></i><span>ink <code>#0B2A3A</code> 14.0:1</span></div><div><i style="background:#1B5E8A"></i><span>blu <code>#1B5E8A</code> 6.5:1</span></div>
+          <div><i style="background:#A9CFE0"></i><span>glass <code>#A9CFE0</code></span></div><div><i style="background:#E6EFF4"></i><span>mist <code>#E6EFF4</code></span></div>
+          <div><i style="background:#F4F8FA"></i><span>paper <code>#F4F8FA</code></span></div><div><i style="background:#EFE9DF"></i><span>sand <code>#EFE9DF</code></span></div>
+          <div><i style="background:#C9A14F"></i><span>gold <code>#C9A14F</code> ink on it 6.2:1</span></div><div><i style="background:#071E2B"></i><span>night <code>#071E2B</code></span></div>
+        </div>
+        <div class="ui"><a class="btn p" href="#cta">Add to cart</a><a class="btn s" href="#cta">Find your scent</a><span class="tag" style="background:#F3E9CF;color:#0B2A3A">Subscribe &amp; save 15%</span></div>
+        <p style="margin-top:14px"><b>Trade-off:</b> reads corporate or resort-hotel if the photography is not warm. Needs the family photos to stay friendly.</p>
+      </div>
+    </div>
+    <div class="cwcard" data-k="lagoon">
+      <div class="sw"><i style="background:#173A3F"></i><i style="background:#1FA3B5"></i><i style="background:#9ADFE6"></i><i style="background:#E3F4F3"></i><i style="background:#F6FBFB"></i><i style="background:#F4F0E8"></i><i style="background:#E05C7B"></i></div>
+      <img src="img/card-deo-lagoon.jpg" alt="The Original deodorant on the Lagoon background">
+      <div class="body">
+        <span class="pill">Brighter · closest to today</span>
+        <h3>Lagoon</h3>
+        <p>Aqua-forward with a hibiscus accent. Closest to the turquoise customers already know, and the most tropical. The cost: the signature aqua fails as text (2.9:1), so links and small type have to drop to a darker teal.</p>
+        <div class="toks">
+          <div><i style="background:#173A3F"></i><span>ink <code>#173A3F</code> 11.7:1</span></div><div><i style="background:#1FA3B5"></i><span>aqua <code>#1FA3B5</code> 2.9:1 fills only</span></div>
+          <div><i style="background:#137585"></i><span>link <code>#137585</code> 4.6:1</span></div><div><i style="background:#E3F4F3"></i><span>mist <code>#E3F4F3</code></span></div>
+          <div><i style="background:#F6FBFB"></i><span>paper <code>#F6FBFB</code></span></div><div><i style="background:#F4F0E8"></i><span>sand <code>#F4F0E8</code></span></div>
+          <div><i style="background:#E05C7B"></i><span>hibiscus <code>#E05C7B</code> white on it 3.5:1</span></div><div><i style="background:#0F2D33"></i><span>night <code>#0F2D33</code></span></div>
+        </div>
+        <div class="ui"><a class="btn p" href="#cta">Add to cart</a><a class="btn s" href="#cta">Find your scent</a><span class="tag" style="background:#FADCE4;color:#173A3F">Subscribe &amp; save 15%</span></div>
+        <p style="margin-top:14px"><b>Trade-off:</b> least premium of the three; it leans toward the beach-shop end of the market where the current brand already sits.</p>
+      </div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:24px"><p><b>Why Tidepool.</b> Kai is safer on contrast and Lagoon is safer on continuity, but Tidepool is the only one that does both jobs at once: it reads premium next to Native and Lume on a phone screen, and the mid blue still rhymes with the turquoise on the 400-odd tubes already in customers' bathrooms. Switch to it at the top and scroll the hero and product cards; that is the storefront.</p></div>
+</div></section>
+
+<section id="type"><div class="wrap">
+  <div class="eyebrow">03 · Typography</div>
+  <h2>Soft serif for the voice, clean sans for the shop.</h2>
+  <div class="typo">
+    <div>
+      <div class="spec">Made by hand<br>in Honolulu.</div>
+      <div class="spec it" style="color:var(--blu)">Fraunces, soft axis</div>
+      <p style="margin-top:18px">Fraunces carries the headlines, product names and pull quotes. Its soft variant has rounded terminals that feel like a hand-cut soap edge rather than a magazine. Manrope does everything else: body copy, prices, buttons, ingredient lists. Both are free on Google Fonts and load with one link tag in the WordPress theme, so no licensing and no self-hosting.</p>
+      <p>Set numerals in tabular figures wherever prices or weights line up. Uppercase labels get 0.1em of tracking. Body copy stays between 60 and 70 characters wide.</p>
+    </div>
+    <div class="scale">
+      <div><code>display 56/1.05</code><span style="font-family:var(--display);font-size:2.2rem;font-weight:500;font-variation-settings:'SOFT' 100,'opsz' 144">Natural deodorant</span></div>
+      <div><code>h2 36/1.1</code><span style="font-family:var(--display);font-size:1.6rem;font-weight:500;font-variation-settings:'SOFT' 100,'opsz' 144">Find your scent</span></div>
+      <div><code>h3 22/1.2</code><span style="font-family:var(--display);font-size:1.2rem;font-weight:500">Cedarwood Lavender</span></div>
+      <div><code>body 16/1.6</code><span>Essential oils help with odor-causing bacteria; this is not an antiperspirant.</span></div>
+      <div><code>small 14/1.5</code><span style="font-size:.875rem;color:var(--muted)">2.65 oz · ships from Honolulu</span></div>
+      <div><code>label 12/.1em</code><span style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Baking soda free</span></div>
+      <div><code>price tabular</code><span style="font-variant-numeric:tabular-nums;font-weight:700">$12.00 &nbsp; $14.00 &nbsp; $15.50</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="imagery" class="band"><div class="wrap">
+  <div class="eyebrow">04 · Product imagery</div>
+  <h2>Every product, cut from the wooden table and set on water.</h2>
+  <p class="lead">All 41 product photos were cut out, white-balanced (the koa table was warming every white tube), and composed onto a paper-to-mist shoreline with a contact shadow, faint wave lines and light-through-water shapes. The outer rim of each image fades to the exact page color, so a card has no visible edge; the product appears to sit on the page itself. The treatment is a script, so new photos get the same look in seconds, in whichever colorway is chosen.</p>
+  <div class="recipe" style="margin:24px 0">
+    <figure><img src="img/before-deo.jpg" alt="Original photo on a wooden table"><figcaption>1 · Original phone photo, warm cast from the table</figcaption></figure>
+    <figure><img src="img/cutout-deo.png" alt="Cut-out product on transparent background"><figcaption>2 · Cut out and neutralised (delivered as transparent PNG)</figcaption></figure>
+    <figure><img src="img/card-deo-tidepool.jpg" alt="Composed product card" data-cw-src="img/card-deo-{cw}.jpg"><figcaption>3 · Shoreline, shadow, wave lines, rim faded to paper</figcaption></figure>
+  </div>
+  <h3 style="margin:28px 0 12px">On the storefront</h3>
+  <div class="mock" aria-label="Homepage mock-up">
+    <div class="ann">Free US shipping on orders over $40 · Made in Honolulu</div>
+    <div class="mhead"><img src="logo/blu-naturals-horizontal.svg" alt="Blu Naturals"><nav>Deodorant · Soap · Hair · Blakbird · Our family · Journal</nav><span>Cart (0)</span></div>
+    <div class="mhero">
+      <img src="img/hero-tidepool.jpg" alt="The Original deodorant on a wide shoreline background" data-cw-src="img/hero-{cw}.jpg">
+      <div class="mcopy"><h2>Deodorant that works, made by a family in Honolulu.</h2><p>Coconut oil, arrowroot, clay and essential oils. Nothing you have to look up. Aluminum free, small batch, shipped from Hawaiʻi.</p><a class="btn p" href="#cta">Shop deodorant</a> &nbsp; <a class="btn s" href="#cta">Find your scent</a></div>
+    </div>
+    <div class="mrow">
+      <div class="mprod"><img src="img/card-deo-tidepool.jpg" alt="" data-cw-src="img/card-deo-{cw}.jpg"><h3>The Original</h3><small>Tea tree, eucalyptus, peppermint, rosemary</small><div class="price"><span>$12.00</span><a class="btn p" href="#cta">Add</a></div></div>
+      <div class="mprod"><img src="img/card-jar-tidepool.jpg" alt="" data-cw-src="img/card-jar-{cw}.jpg"><h3>Deodorant Jar</h3><small>Same formula, glass jar, 6 oz</small><div class="price"><span>$15.00</span><a class="btn p" href="#cta">Add</a></div></div>
+      <div class="mprod"><img src="img/card-soap-tidepool.jpg" alt="" data-cw-src="img/card-soap-{cw}.jpg"><h3>Organic Bar Soap</h3><small>Seven scents, monstera stamped</small><div class="price"><span>$8.00</span><a class="btn p" href="#cta">Add</a></div></div>
+    </div>
+  </div>
+  <h3 style="margin:32px 0 12px">The set</h3>
+  <div class="pgrid" id="pgrid"></div>
+  <div class="grid g2" style="margin-top:24px">
+    <div class="note"><p><b>What is delivered.</b> For each of the 41 photos: a transparent PNG (2000 px), a 1:1 card (1200 px) and a 4:5 portrait (1200 px) for product pages and Instagram; the first photo of each product also gets a 2000×1333 hero with copy space on the left. 13 products, 26 variants, all covered.</p></div>
+    <div class="note"><p><b>What still needs a camera.</b> The hand-held jar shots and the soap-in-bowl shot were cropped in the originals and read as floating. Three lifestyle setups would finish the set: hands applying the stick, the family at the pour, and one flat lay of the full range. Phone is fine; shoot on white paper near a window, not on the koa table.</p></div>
+  </div>
+</div></section>
+
+<section id="story"><div class="wrap">
+  <div class="eyebrow">05 · The family</div>
+  <h2>The thing Native and Lume cannot copy is the people making it.</h2>
+  <p class="lead">Every competitor has coconut oil and arrowroot. None of them has a family in Honolulu infusing witch hazel with North Shore vanilla beans for three weeks. The site should make that impossible to miss, without turning into a diary.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Positioning line</h3><p style="font-family:var(--display);font-size:1.35rem;font-variation-settings:'SOFT' 100">Small-batch natural care, made by a family in Honolulu.</p><p>Supporting lines: "Ingredients you already know." · "Not an antiperspirant, on purpose." · "Made this week, not this year."</p></div>
+    <div class="card"><h3>Voice</h3><p>Warm, plain, specific. Say "coconut oil and clay" rather than "clean formulation". Explain the trade-offs out loud (it softens in heat; natural deodorant needs a two-week adjustment). Avoid "toxin-free" and "chemical-free": they invite the wrong argument and the FTC has started fining for them. Hawaiian words only where the family already uses them (ohana, mahalo): the discount codes show they do.</p></div>
+    <div class="card"><h3>Where the family appears</h3><ul><li>Homepage: one photo block under the hero, three sentences, signed with first names, linking to the story page.</li><li>Product pages: a "who made this" strip with the maker's photo and the batch week.</li><li>Order confirmation and shipping emails: a photo and a one-line note.</li><li>Instagram: the making process is the content, see Social below.</li></ul></div>
+  </div>
+  <div class="note" style="margin-top:20px"><p><b>Needed from the client:</b> first names and roles of everyone in the family who makes or ships product, 10 to 20 candid photos of them at work (phone photos are fine, we will apply the same treatment), and the two-paragraph origin story in their own words. The story page and the product-page strips are templated and ready to drop these in.</p></div>
+</div></section>
+
+<section id="blog" class="band"><div class="wrap">
+  <div class="eyebrow">06 · Blog from the Instagram archive</div>
+  <h2>Old posts become the raw material. Pillar articles do the ranking.</h2>
+  <p class="lead">Instagram captions republished as blog posts will not rank: they are short, undated in Google's eyes, and answer no search. The archive is still the best asset the brand has, because it holds four years of photos, customer comments and the founder's actual explanations. The plan uses it as sourcing for ten articles written around questions people type into Google, each embedding the original posts.</p>
+  <h3 style="margin:24px 0 12px">Process</h3>
+  <ol class="steps">
+    <li>Client downloads the Instagram archive (Accounts Center → Your information and permissions → Download your information → JSON, all time). I parse it into a sheet: every post, caption, date, media file, tagged by theme.</li>
+    <li>Posts are clustered under the ten pillars below. Each pillar gets 900 to 1,500 words written from the founder's captions and comments, with 3 to 6 archive photos embedded (treated like the product shots) and the original dates kept as "from the journal, June 2023".</li>
+    <li>Each article links to two products and one other article; each product page links back to its article. Rank Math handles titles, meta, article schema and the sitemap. Product pages get product schema with price, weight and reviews.</li>
+    <li>Publish two a week for five weeks, each with an Instagram post that links back, so the archive loop closes. After that, one new article a month from whatever the family posted that month.</li>
+  </ol>
+  <div class="tbl" style="margin-top:20px"><table>
+    <thead><tr><th>Pillar article</th><th>Search it answers</th><th>Products it carries</th><th>Archive material</th></tr></thead>
+    <tbody>
+      <tr><td>Switching to natural deodorant: the first two weeks</td><td>switching to natural deodorant · natural deodorant transition</td><td>all deodorants</td><td>customer comments, founder tips</td></tr>
+      <tr><td>Baking soda free deodorant: who needs it and why we make two formulas</td><td>baking soda free natural deodorant · natural deodorant sensitive skin</td><td>Baking Soda Free, Jar</td><td>launch posts for the formula</td></tr>
+      <tr><td>Scent without essential oils: deodorant from infused herbs</td><td>essential oil free deodorant · fragrance free natural deodorant</td><td>Essential Oil Free, Unscented, Blakbird No.3</td><td>infusion process photos</td></tr>
+      <tr><td>Why natural deodorant softens in the heat (and the one-hour fix)</td><td>natural deodorant melted · natural deodorant soft</td><td>all deodorants, Jar</td><td>stories about summer shipping</td></tr>
+      <tr><td>Natural dry shampoo for brunettes, blondes and redheads</td><td>natural dry shampoo dark hair · dry shampoo powder brunette</td><td>Dry Shampoo, Refill</td><td>shade comparison posts</td></tr>
+      <tr><td>Every ingredient in our deodorant and what it does</td><td>arrowroot powder deodorant · diatomaceous earth deodorant · kaolin clay deodorant</td><td>all deodorants</td><td>ingredient close-ups</td></tr>
+      <tr><td>Men's natural deodorant that does not smell like a candle: Blakbird</td><td>natural deodorant for men · cedarwood sage deodorant</td><td>Blakbird No.1, No.3, charcoal soap</td><td>Blakbird launch, customer photos</td></tr>
+      <tr><td>Bug spray without essential oils: witch hazel and vanilla bean</td><td>essential oil free bug spray · natural bug spray Hawaii</td><td>Bug Spray</td><td>vanilla bean sourcing posts</td></tr>
+      <tr><td>How we make small-batch organic soap in Honolulu</td><td>organic bar soap Hawaii · handmade soap Honolulu</td><td>all soaps</td><td>pour and cut photos, family</td></tr>
+      <tr><td>Deodorant jar or stick: which to choose and how to apply the jar</td><td>cream deodorant vs stick · deodorant jar how to apply</td><td>Jar, sticks</td><td>spatula and application posts</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="margin-top:12px;font-size:.9rem">The search phrases are the queries these articles are written to match; volumes are not verified here and should be checked in Search Console once the site has three months of data. "Made in Hawaii gifts" is an eleventh, seasonal article for November with the gift card and bundles.</p>
+</div></section>
+
+<section id="email"><div class="wrap">
+  <div class="eyebrow">07 · Email</div>
+  <h2>Deodorant runs out in about sixty days. The email system is built around that.</h2>
+  <div class="grid g2" style="margin-bottom:24px">
+    <div class="card"><h3>The list, honestly</h3>
+      <div class="kv"><b>1,658</b><span>contacts in Shopify</span><b>457</b><span>have bought at least once</span><b>155</b><span>bought twice or more</span><b>103</b><span>opted in to marketing</span><b>~1,200</b><span>accounts or abandoned checkouts with no order</span></div>
+      <p style="margin-top:12px">Only the 103 opt-ins and the 457 buyers should be imported. Buyers are an existing customer relationship under CAN-SPAM; the launch email to them must carry a clear unsubscribe and an explicit "keep hearing from us" button so the list is clean from day one. The 1,200 non-buyers stay out.</p></div>
+    <div class="card"><h3>Tool</h3><p>Klaviyo, connected to WooCommerce. Free up to 250 active profiles, so the first months cost nothing, and its flows can branch on which product was bought, which is what the replenishment flow needs. MailPoet runs inside WordPress and is cheaper later, but its automations cannot do product-level timing without workarounds. Revisit only if the list passes 1,000 and the flows are not paying for the plan.</p></div>
+  </div>
+  <h3 style="margin:0 0 12px">Flows</h3>
+  <div class="flow">
+    <div class="step"><div><span class="when">Launch, once</span></div><div><b>Win-back the 457</b><p>"We rebuilt Blu Naturals (same recipes)." New look, new site, 20% code for 10 days, one button: keep hearing from us. Historically the REBRAND and ohana codes converted; this is the same play with a reason.</p></div></div>
+    <div class="step"><div><span class="when">Sign-up, 3 emails</span></div><div><b>Welcome</b><p>Day 0: the family and the 10% code. Day 2: how natural deodorant works and the two-week adjustment (the article). Day 5: code expires tomorrow, with the three bestsellers.</p></div></div>
+    <div class="step"><div><span class="when">1 h and 24 h</span></div><div><b>Abandoned cart</b><p>First email is the cart and the free-shipping gap ("add $9 for free shipping"). Second adds one review and the softening-in-heat note, so the one objection is answered before it is raised.</p></div></div>
+    <div class="step"><div><span class="when">Day 0 · 10 · 20</span></div><div><b>Post-purchase</b><p>Day 0: shipping note with the fridge tip for softened sticks, signed by whoever packed it. Day 10: "how is it going" with the transition article. Day 20: review request, one click, with a photo of the maker.</p></div></div>
+    <div class="step"><div><span class="when">Day 50 · 65 · 80</span></div><div><b>Replenishment</b><p>Deodorant only. Day 50: "about a week left", one-click reorder of the same scent. Day 65: 10% off a 3-pack or subscribe-and-save. Day 80: last nudge, then stop. This flow is the largest single revenue lever on the site; 155 repeat buyers already behave this way without being asked.</p></div></div>
+    <div class="step"><div><span class="when">Monthly</span></div><div><b>Letters from the lanai</b><p>One newsletter: what the family made this month, one article, one product. Nothing else. Sent the first Sunday evening, Hawaiʻi time, when mainland subscribers are planning the week.</p></div></div>
+  </div>
+</div></section>
+
+<section id="social" class="band"><div class="wrap">
+  <div class="eyebrow">08 · Social</div>
+  <h2>Three pillars, one creator program, and nothing that needs a studio.</h2>
+  <div class="grid g3">
+    <div class="card"><h3>Making it <span class="tag">3 reels / week</span></h3><p>The pour, the stamp, the label, the packing table. Thirty seconds, phone on a stand, no talking required. This is the proof behind "small batch" and the only content competitors cannot produce.</p></div>
+    <div class="card"><h3>Explaining it <span class="tag">2 carousels / week</span></h3><p>One ingredient, one trade-off, one myth. The ten blog pillars give forty carousels without new research. Each carousel's last slide links to the article.</p></div>
+    <div class="card"><h3>Customers and creators <span class="tag">daily stories</span></h3><p>Reposts of tagged photos, review screenshots, creator clips. Ask for the tag on the day-20 email and on the box insert.</p></div>
+  </div>
+  <div class="note" style="margin-top:20px"><p><b>Creator program.</b> One code, rewild, produced 125 orders, 13% of everything the store has ever sold. That is a channel, not luck. Formalize it: ten micro-creators (nurses, hikers, runners, mothers of young kids, the audiences already buying), each with a 10% code and 10% commission tracked in WooCommerce with a free affiliate plugin, a starter kit of three deodorants and a soap, and one brief: show the two-week switch. Recruit the first five from existing customers who post; the orders export shows who they are.</p></div>
+  <p style="margin-top:20px"><b>TikTok Shop and Pinterest</b> are second-year channels. Pinterest first: the soap and flat-lay imagery is Pinterest-shaped, it is search-driven like the blog, and the pins can carry the same product cards.</p>
+</div></section>
+
+<section id="cta"><div class="wrap">
+  <div class="eyebrow">09 · Calls to action</div>
+  <h2>One ask per screen, and every ask leads to a second order.</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Where</th><th>Primary ask</th><th>Secondary</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Announcement bar</td><td>Free US shipping over $40</td><td>Made in Honolulu</td><td>AOV is $50 and shipping is $5 to $10; a $40 bar pulls one-stick carts to two. Margin check with the client first.</td></tr>
+      <tr><td>Homepage hero</td><td>Shop deodorant</td><td>Find your scent (4-question quiz)</td><td>85% of units are deodorant; the quiz converts the undecided and captures email.</td></tr>
+      <tr><td>Product page</td><td>Add to cart, sticky on mobile</td><td>Subscribe &amp; save 15%, every 2 months</td><td>Turns the 60-day cycle into a standing order. Scent switcher as swatches, not a dropdown.</td></tr>
+      <tr><td>Product page, below fold</td><td>Buy 3, save 10%</td><td>Who made this (family strip)</td><td>Three sticks is six months and clears the free-shipping bar.</td></tr>
+      <tr><td>Cart drawer</td><td>Free-shipping progress bar</td><td>Add a bar of soap, $8</td><td>Soap is the natural add-on and lifts AOV without discounting.</td></tr>
+      <tr><td>First visit, exit intent</td><td>10% off your first order (email + SMS)</td><td>No thanks, I'll pay full price</td><td>Feeds the welcome flow. Shown once, after 25 seconds or exit, never on the cart.</td></tr>
+      <tr><td>Blog articles</td><td>The product the article is about, inline card</td><td>Get the next article by email</td><td>Search traffic lands here, not on the homepage.</td></tr>
+      <tr><td>Footer</td><td>Letters from the lanai sign-up</td><td>Instagram grid, Find your scent</td><td>Catch-all for readers who scrolled everything.</td></tr>
+      <tr><td>Box insert</td><td>Tag us, we repost</td><td>QR to the review page and refill</td><td>Feeds the social pillar and the day-20 review ask.</td></tr>
+      <tr><td>Order confirmation</td><td>Add to your order within 30 minutes</td><td>Track your package</td><td>Post-purchase add-ons convert at 5 to 10% with zero acquisition cost.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="next" class="band"><div class="wrap">
+  <div class="eyebrow">10 · Decisions and next steps</div>
+  <h2>Five decisions unlock the build.</h2>
+  <div class="grid g2">
+    <div class="card"><h3>Decide</h3><ul class="check">
+      <li><b>Colorway.</b> Tidepool recommended; the switcher above shows all three on the real storefront pieces.</li>
+      <li><b>Prices.</b> $12 sits under Native ($13 to $14) and Lume ($15 to $17). With this identity $14 is defensible, and the 3-pack and subscription discounts need a base to come off. Also settles the tax-inclusive question already flagged in the Shopify settings notes.</li>
+      <li><b>Free-shipping threshold.</b> $40 proposed; depends on margin per stick.</li>
+      <li><b>Labels.</b> Every product photo still shows the old swirl. Launch can go ahead with the old labels, but the label redesign should follow immediately, before a second photo shoot.</li>
+      <li><b>Email tool.</b> Klaviyo proposed; needs the client's sign-off because it holds the customer list.</li>
+    </ul></div>
+    <div class="card"><h3>Send</h3><ul class="check">
+      <li>Instagram archive export (JSON, all time).</li>
+      <li>Family names, roles, 10 to 20 photos at work, the origin story in their words.</li>
+      <li>The three lifestyle shots listed under Imagery.</li>
+      <li>Navigation menu contents, policies, and the two page HTMLs still missing from the Shopify capture.</li>
+    </ul></div>
+  </div>
+  <div class="note" style="margin-top:20px"><p><b>Then:</b> lock the chosen colorway into a design-system reference the theme build reads from, write the ten articles from the archive, design the new labels on the same system, and build the WooCommerce theme against the homepage and product-page layouts shown here.</p></div>
+</div></section>
+
+<footer><div class="wrap">Prepared by Kaiel Systems for Blu Naturals · November 2026 · Logo files, cut-outs and composites delivered separately as SVG, PNG and JPG.</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var btns=document.querySelectorAll('.cw');
+  function apply(cw){
+    root.setAttribute('data-cw',cw);
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cw===cw));});
+    document.querySelectorAll('[data-cw-src]').forEach(function(img){img.src=img.getAttribute('data-cw-src').replace('{cw}',cw);});
+    try{localStorage.setItem('blu-cw',cw);}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.cw);});});
+  var saved=null; try{saved=localStorage.getItem('blu-cw');}catch(e){}
+  if(saved&&['tidepool','kai','lagoon'].indexOf(saved)>=0) apply(saved);
+  // product grid
+  var names=['The Original','Blakbird No.1','Deodorant Jar','Dry Shampoo','Bug Spray','Blakbird Charcoal Soap','Organic Bar Soap','Dry Shampoo Refill','Essential Oil Free','Unscented','Juniper Pine Soap','Baking Soda Free'];
+  var g=document.getElementById('pgrid');
+  for(var i=0;i<12;i++){var im=new Image();im.src='img/grid-'+(i<10?'0'+i:i)+'.jpg';im.alt=names[i];im.loading='lazy';g.appendChild(im);}
+})();
+</script>

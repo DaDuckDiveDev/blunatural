@@ -1,0 +1,80 @@
+name: Deploy to SiteGround
+
+# Pushes to main deploy the theme, the plugin and the brand uploads over SSH (rsync).
+# Secrets (repo → Settings → Secrets and variables → Actions):
+#   SG_SSH_KEY   private key (the public half lives in SiteGround Site Tools → Devs → SSH Keys Manager)
+#   SG_HOST      ssh.johnw870.sg-host.com
+#   SG_USER      u988-texgqnc3rkhl
+#   SG_PATH      WordPress root, e.g. /home/u988-texgqnc3rkhl/www/blunaturals.com/public_html
+# Variable (optional): SG_PORT, defaults to 18765.
+# Run with "provision" checked to also run scripts/provision.php on the server (first deploy / content reset).
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'wp-content/**'
+      - 'import/**'
+      - 'scripts/provision.php'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+    inputs:
+      provision:
+        description: 'Run provision.php on the server after syncing'
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-siteground
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint PHP
+        run: |
+          find wp-content/themes/blu-naturals wp-content/plugins/blu-core scripts -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: SSH key
+        env:
+          SG_SSH_KEY: ${{ secrets.SG_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SG_SSH_KEY" > ~/.ssh/siteground && chmod 600 ~/.ssh/siteground
+          ssh-keyscan -p "${{ vars.SG_PORT || 18765 }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Sync
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_USER: ${{ secrets.SG_USER }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+          SG_PORT: ${{ vars.SG_PORT || 18765 }}
+        run: |
+          SSH="ssh -i ~/.ssh/siteground -p $SG_PORT"
+          $SSH "$SG_USER@$SG_HOST" "mkdir -p $SG_PATH/wp-content/themes $SG_PATH/wp-content/plugins $SG_PATH/wp-content/uploads $SG_PATH/../blu-import/import $SG_PATH/../blu-import/scripts"
+          rsync -az --delete -e "$SSH" wp-content/themes/blu-naturals/ "$SG_USER@$SG_HOST:$SG_PATH/wp-content/themes/blu-naturals/"
+          rsync -az --delete -e "$SSH" wp-content/plugins/blu-core/   "$SG_USER@$SG_HOST:$SG_PATH/wp-content/plugins/blu-core/"
+          rsync -az          -e "$SSH" wp-content/uploads/blu/        "$SG_USER@$SG_HOST:$SG_PATH/wp-content/uploads/blu/"
+          rsync -az --delete -e "$SSH" import/                        "$SG_USER@$SG_HOST:$SG_PATH/../blu-import/import/"
+          rsync -az          -e "$SSH" scripts/provision.php          "$SG_USER@$SG_HOST:$SG_PATH/../blu-import/scripts/provision.php"
+
+      - name: Provision (optional)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.provision }}
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_USER: ${{ secrets.SG_USER }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+          SG_PORT: ${{ vars.SG_PORT || 18765 }}
+        run: ssh -i ~/.ssh/siteground -p "$SG_PORT" "$SG_USER@$SG_HOST" "cd $SG_PATH && wp eval-file ../blu-import/scripts/provision.php"
+
+      - name: Flush caches
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_USER: ${{ secrets.SG_USER }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+          SG_PORT: ${{ vars.SG_PORT || 18765 }}
+        run: ssh -i ~/.ssh/siteground -p "$SG_PORT" "$SG_USER@$SG_HOST" "cd $SG_PATH && wp cache flush && (wp sg purge 2>/dev/null || true)"

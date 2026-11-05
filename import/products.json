@@ -1,0 +1,167 @@
+{
+  "_notes": [
+    "Catalog rebuilt from the Shopify export of 5 Nov 2026. Prices and stock are carried over unchanged; both are open decisions (see README).",
+    "Images point at wp-content/uploads/blu/products/<handle>/<nn>-card.jpg (the composed set). Transparent cut-outs live in design/cutouts.",
+    "Ingredient lists are verbatim from the Shopify product bodies. Marketing copy is new.",
+    "Slugs match the old Shopify handles so /products/<handle> redirects land on the right product. Two handles were renamed (see blu-core/inc/redirects.php)."
+  ],
+  "categories": [
+    { "slug": "deodorant", "name": "Deodorant", "description": "Aluminum-free deodorant poured by hand in Honolulu. Coconut oil, arrowroot, clay, beeswax and shea, with essential oils or a slow herb infusion for scent. Not an antiperspirant, on purpose." },
+    { "slug": "soap", "name": "Soap", "description": "Certified organic cold-process bars, stamped with a monstera leaf and boxed in recycled card." },
+    { "slug": "hair", "name": "Hair", "description": "Dry shampoo powder in three shades, with refill pouches so the glass jar gets used again." },
+    { "slug": "outdoors", "name": "Bug spray", "description": "Witch hazel infused for three weeks with peppermint, lavender and North Shore vanilla beans. No essential oils." },
+    { "slug": "blakbird", "name": "Blakbird", "description": "The men's line. Same formulas, scents chosen for men, bought by everyone." },
+    { "slug": "digital", "name": "Digital", "description": "Downloads from the family kitchen." }
+  ],
+  "attributes": [
+    { "slug": "scent", "name": "Scent" },
+    { "slug": "shade", "name": "Shade" }
+  ],
+  "products": [
+    {
+      "slug": "all-natural-deodorant", "name": "The Original Deodorant", "type": "variable",
+      "categories": ["deodorant"], "tags": ["bestseller", "essential-oils"], "menu_order": 1, "featured": true,
+      "short": "Our first and most reordered stick. Tea tree, eucalyptus, peppermint and rosemary in a coconut oil, arrowroot and clay base. 2.65 oz.",
+      "description": "<p>This is the stick that started Blu Naturals. Coconut oil and shea butter carry the essential oils, arrowroot and kaolin clay keep you dry-feeling, baking soda and diatomaceous earth handle odor. Nothing else.</p><p>It is not an antiperspirant: your sweat glands keep working, which is the point. Most people are fully switched over in about two weeks. If it has not settled by then, we will swap it for the baking-soda-free formula.</p><h3>Ingredients</h3><p>Coconut oil, organic arrowroot powder, baking soda, organic diatomaceous earth, white kaolin clay powder, organic beeswax, organic shea butter, essential oils.</p><h3>Scents</h3><ul><li><strong>The Original</strong>: tea tree, eucalyptus, peppermint, rosemary.</li><li><strong>Cedarwood Lavender</strong>: softer and woodier.</li><li><strong>Patchouli Orange Lavender</strong>: warm and a little sweet.</li></ul><h3>Size</h3><p>2.65 oz twist-up tube. Made in Hawaiʻi.</p>",
+      "weight_g": 113, "images": ["01-card.jpg", "03-card.jpg", "04-card.jpg", "02-card.jpg"],
+      "attribute": "scent",
+      "variations": [
+        { "option": "The Original", "regular_price": "12.00", "stock": 0, "image": "01-card.jpg" },
+        { "option": "Cedarwood Lavender", "regular_price": "12.00", "stock": 2, "image": "03-card.jpg" },
+        { "option": "Patchouli Orange Lavender", "regular_price": "12.00", "stock": 9, "image": "04-card.jpg" }
+      ],
+      "meta": { "_blu_made_by": "", "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "all-natural-deodorant-baking-soda-free", "name": "Baking Soda Free Deodorant", "type": "variable",
+      "categories": ["deodorant"], "tags": ["sensitive-skin", "essential-oils"], "menu_order": 2, "featured": true,
+      "short": "The Original formula without baking soda, for skin that gets a rash from the regular stick. Bentonite clay does the work instead. 2.65 oz.",
+      "description": "<p>Some skin does not get along with baking soda. This stick swaps it for bentonite clay and keeps everything else: coconut oil, shea, arrowroot, diatomaceous earth, beeswax and the same essential oil blends.</p><p>If you have had a rash or itch from a natural deodorant before, start here.</p><h3>Ingredients</h3><p>Coconut oil, organic arrowroot powder, organic diatomaceous earth, bentonite clay, organic beeswax, organic shea butter, essential oils.</p><h3>Scents</h3><ul><li><strong>The Original</strong>: tea tree, eucalyptus, peppermint, rosemary.</li><li><strong>Cedarwood Lavender</strong>.</li></ul><h3>Size</h3><p>2.65 oz twist-up tube. Made in Hawaiʻi.</p>",
+      "weight_g": 128, "images": ["01-card.jpg", "02-card.jpg"],
+      "attribute": "scent",
+      "variations": [
+        { "option": "The Original", "regular_price": "12.00", "stock": 4, "image": "01-card.jpg" },
+        { "option": "Cedarwood Lavender", "regular_price": "12.00", "stock": 0, "image": "01-card.jpg" }
+      ],
+      "meta": { "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "unscented-all-natural-deodorant", "name": "Unscented Deodorant", "type": "simple",
+      "categories": ["deodorant"], "tags": ["sensitive-skin", "no-essential-oils", "fragrance-free"], "menu_order": 3,
+      "short": "No essential oils, no fragrance, nothing to react to. The same base, left alone. 2.65 oz.",
+      "description": "<p>For anyone who wants the deodorant to do its job quietly. No essential oils, no fragrance of any kind. Bentonite clay and aluminum-free baking soda handle odor; coconut oil, shea and beeswax carry it.</p><h3>Ingredients</h3><p>Coconut oil, organic arrowroot powder, aluminum-free baking soda, organic diatomaceous earth, bentonite clay, organic beeswax, organic shea butter.</p><h3>Size</h3><p>2.65 oz twist-up tube. Made in Hawaiʻi.</p>",
+      "weight_g": 128, "images": ["01-card.jpg"], "regular_price": "12.00", "stock": 2,
+      "meta": { "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "essential-oil-free-deodorant", "name": "Essential Oil Free Deodorant", "type": "variable",
+      "categories": ["deodorant"], "tags": ["no-essential-oils", "sensitive-skin", "infused"], "menu_order": 4, "featured": true,
+      "short": "Scent from herbs and flowers infused into the coconut oil instead of essential oils. Light, soft, skin-friendly. 2.65 oz.",
+      "description": "<p>Essential oils are strong. For people who react to them, or just prefer something quieter, we infuse the coconut oil itself with organic herbs and flowers over several weeks. The result smells like the plant, not like perfume, and it is noticeably lighter than the essential-oil sticks.</p><h3>Ingredients</h3><p>Coconut oil, organic beeswax, organic shea butter, organic arrowroot powder, aluminum-free baking soda, organic diatomaceous earth, white kaolin clay powder, organic dried plants and flowers.</p><h3>Infusions</h3><ul><li><strong>Peppermint Leaf</strong>: cool and green.</li><li><strong>Hibiscus Chamomile Calendula</strong>: soft and floral.</li></ul><h3>Size</h3><p>2.65 oz twist-up tube. Made in Hawaiʻi.</p>",
+      "weight_g": 128, "images": ["01-card.jpg", "03-card.jpg", "02-card.jpg"],
+      "attribute": "scent",
+      "variations": [
+        { "option": "Peppermint Leaf", "regular_price": "14.00", "stock": 1, "image": "01-card.jpg" },
+        { "option": "Hibiscus Chamomile Calendula", "regular_price": "14.00", "stock": 11, "image": "03-card.jpg" }
+      ],
+      "meta": { "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "blakbird-natural-deodorant-for-men", "name": "Blakbird Deodorant", "type": "variable",
+      "categories": ["blakbird", "deodorant"], "tags": ["men", "bestseller"], "menu_order": 5, "featured": true,
+      "short": "The men's line. Same formula as the Original with scents chosen for men: cedarwood, sage, tea tree and vanilla in No.1; sandalwood and local vanilla bean in No.3. 2.65 oz.",
+      "description": "<p>Blakbird is Blu Naturals for men: the same coconut oil, arrowroot and clay base, with scents that do not smell like a candle.</p><ul><li><strong>No.1</strong> blends essential oils of cedarwood, sage, tea tree and vanilla. Contains baking soda.</li><li><strong>No.3</strong> is essential-oil free and baking-soda free: an organic sandalwood and local vanilla bean infusion, for sensitive skin or anyone who wants the scent to stay close.</li></ul><h3>Ingredients</h3><p>Organic coconut oil, arrowroot powder, aluminum-free baking soda (not in No.3), organic shea butter, organic diatomaceous earth, organic white kaolin clay powder, organic beeswax; essential oils of cedarwood, sage, tea tree and vanilla (No.1); organic sandalwood and local vanilla bean infusion (No.3).</p><h3>Size</h3><p>2.65 oz twist-up tube. Made in Hawaiʻi.</p>",
+      "weight_g": 128, "images": ["03-card.jpg", "01-card.jpg", "04-card.jpg", "02-card.jpg"],
+      "attribute": "scent",
+      "variations": [
+        { "option": "No.1 Cedarwood Sage", "regular_price": "14.00", "stock": 2, "image": "03-card.jpg" },
+        { "option": "No.3 Sandalwood Vanilla (essential oil free)", "regular_price": "14.00", "stock": 7, "image": "01-card.jpg" }
+      ],
+      "meta": { "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "all-natural-deodorant-jar", "name": "The Deodorant Jar", "type": "simple",
+      "categories": ["deodorant"], "tags": ["less-plastic", "essential-oils"], "menu_order": 6,
+      "short": "The Original formula in a glass jar with a wooden spatula. Less packaging, more per jar. 2.65 oz.",
+      "description": "<p>Same recipe as the Original stick, poured into a glass jar you can recycle or refill. Scoop a pea-sized amount with the spatula or a fingertip and press it in; it melts at skin temperature.</p><h3>Ingredients</h3><p>Coconut oil, organic arrowroot powder, baking soda, organic diatomaceous earth, white kaolin clay powder, organic beeswax, organic shea butter, essential oils of tea tree, eucalyptus, peppermint and rosemary.</p><h3>Size</h3><p>2.65 oz glass jar. Made in Hawaiʻi.</p>",
+      "weight_g": 170, "images": ["01-card.jpg", "02-card.jpg", "03-card.jpg", "04-card.jpg", "05-card.jpg"], "regular_price": "15.00", "stock": 9,
+      "meta": { "_blu_care_note": "heat" }
+    },
+    {
+      "slug": "organic-citrus-lavender-bar-soap", "name": "Organic Bar Soap", "type": "variable",
+      "categories": ["soap"], "tags": ["organic", "monstera"], "menu_order": 10, "featured": true,
+      "short": "Certified organic cold-process bar in seven scents, stamped with a monstera leaf and boxed in recycled card. 4 oz.",
+      "description": "<p>A proper bar of soap: saponified sunflower, coconut, palm and safflower oils with the glycerin kept in, so it lathers without stripping. Each bar is cut by hand and stamped with a monstera leaf.</p><h3>Ingredients (citrus lavender)</h3><p>Saponified oils from sunflower, coconut, palm and safflower (with glycerin retained), water, essential oil of orange, lavandin and tangerine, annatto seed, orange peel, rose hips, rosemary extract. Other scents vary in botanicals and essential oils.</p><h3>Scents</h3><p>Citrus Lavender, Lavender, Peppermint Leaf, Patchouli, Oatmeal Shea Honey, Sage, Juniper Berry Pine.</p><h3>Size</h3><p>4 oz bar, individually boxed in recycled material.</p>",
+      "weight_g": 142, "images": ["09-card.jpg", "02-card.jpg", "06-card.jpg", "05-card.jpg", "04-card.jpg", "03-card.jpg", "07-card.jpg", "08-card.jpg", "10-card.jpg", "01-card.jpg"],
+      "attribute": "scent",
+      "variations": [
+        { "option": "Citrus Lavender", "regular_price": "8.00", "stock": 7, "image": "06-card.jpg" },
+        { "option": "Lavender", "regular_price": "8.00", "stock": 0, "image": "05-card.jpg" },
+        { "option": "Peppermint Leaf", "regular_price": "8.00", "stock": 8, "image": "04-card.jpg" },
+        { "option": "Patchouli", "regular_price": "8.00", "stock": 3, "image": "03-card.jpg" },
+        { "option": "Oatmeal Shea Honey", "regular_price": "8.00", "stock": 9, "image": "07-card.jpg" },
+        { "option": "Sage", "regular_price": "8.00", "stock": 9, "image": "08-card.jpg" },
+        { "option": "Juniper Berry Pine", "regular_price": "8.00", "stock": 7, "image": "10-card.jpg" }
+      ]
+    },
+    {
+      "slug": "blakbird-organic-charcoal-tea-tree-bar-soap", "name": "Blakbird Charcoal Tea Tree Bar Soap", "type": "simple",
+      "categories": ["blakbird", "soap"], "tags": ["men", "organic", "charcoal"], "menu_order": 11,
+      "short": "Activated charcoal, tea tree, orange and bergamot in a certified organic bar. The Blakbird soap. 4 oz.",
+      "description": "<p>The men's bar: activated charcoal for a deeper clean, tea tree and bergamot for scent, cocoa and shea butter so it does not dry you out. Same organic cold-process base as the rest of the range.</p><h3>Ingredients</h3><p>Saponified oils from sunflower, coconut, palm and safflower (with glycerin retained), water, cocoa butter, essential oil of orange, tea tree and bergamot, activated charcoal, plantain leaf, cocoa, shea butter, rosemary extract.</p><h3>Size</h3><p>4 oz bar, individually boxed in recycled material.</p>",
+      "weight_g": 142, "images": ["02-card.jpg", "01-card.jpg"], "regular_price": "8.00", "stock": 7,
+      "_src_dir": "blackbird-organic-black-tea-tree-bar-soap"
+    },
+    {
+      "slug": "all-natural-dry-shampoo", "name": "Dry Shampoo", "type": "variable",
+      "categories": ["hair"], "tags": ["powder", "glass-jar"], "menu_order": 20,
+      "short": "Arrowroot and cinnamon with a clay matched to your hair color: yellow clay for blonde, red clay for red, rhassoul and cocoa for brunette. 4 oz glass shaker.",
+      "description": "<p>Four ingredients, three shades. Organic arrowroot absorbs oil, ground cinnamon keeps it fresh, and the clay is chosen so it disappears into your hair instead of leaving a grey cast.</p><h3>Ingredients</h3><ul><li><strong>Blonde</strong>: organic arrowroot powder, organic ground cinnamon, Brazilian yellow clay powder.</li><li><strong>Red</strong>: organic arrowroot powder, organic ground cinnamon, Moroccan red clay powder.</li><li><strong>Brunette</strong>: organic arrowroot powder, organic ground cinnamon, rhassoul clay, cocoa powder.</li></ul><h3>How to use</h3><p>Sprinkle into your hands and massage into the scalp, or use a small bowl and a powder brush. Refill pouches keep the glass jar in service.</p><h3>Size</h3><p>4 oz glass jar.</p>",
+      "weight_g": 213, "images": ["01-card.jpg", "02-card.jpg", "03-card.jpg", "04-card.jpg"],
+      "attribute": "shade",
+      "variations": [
+        { "option": "Blonde", "regular_price": "15.00", "sale_price": "7.50", "stock": 4, "image": "02-card.jpg" },
+        { "option": "Brunette", "regular_price": "15.00", "sale_price": "7.50", "stock": 2, "image": "03-card.jpg" },
+        { "option": "Red", "regular_price": "15.00", "sale_price": "7.50", "stock": 5, "image": "04-card.jpg" }
+      ]
+    },
+    {
+      "slug": "dry-shampoo-refill", "name": "Dry Shampoo Refill", "type": "variable",
+      "categories": ["hair"], "tags": ["refill", "less-waste"], "menu_order": 21,
+      "short": "The same dry shampoo in a kraft pouch. Pour it into your glass jar and save the packaging and a few dollars. 4 oz.",
+      "description": "<p>Keep the jar, skip the glass. The refill pouch holds the same 4 oz of dry shampoo in your shade.</p><h3>Ingredients</h3><p>As the Dry Shampoo: organic arrowroot powder, organic ground cinnamon, and the clay for your shade.</p><h3>Size</h3><p>4 oz pouch.</p>",
+      "weight_g": 113, "images": ["01-card.jpg", "02-card.jpg", "04-card.jpg", "03-card.jpg"],
+      "attribute": "shade",
+      "variations": [
+        { "option": "Blonde", "regular_price": "11.00", "stock": 4, "image": "02-card.jpg" },
+        { "option": "Brunette", "regular_price": "11.00", "stock": 4, "image": "04-card.jpg" },
+        { "option": "Red", "regular_price": "11.00", "stock": 5, "image": "03-card.jpg" }
+      ]
+    },
+    {
+      "slug": "all-natural-herbal-infused-bug-spray", "name": "Herbal Infused Bug Spray", "type": "simple",
+      "categories": ["outdoors"], "tags": ["no-essential-oils", "infused", "hawaii"], "menu_order": 30,
+      "short": "Witch hazel infused for three weeks with peppermint leaf, lavender and vanilla beans from Oʻahu's North Shore. No essential oils. 2 oz.",
+      "description": "<p>A bug spray without essential oils. Witch hazel is infused in small batches for two to three weeks with organic peppermint leaf, organic lavender flowers and local vanilla beans until it is strong enough to work. The vanilla is what makes it smell like Hawaiʻi instead of a first-aid kit.</p><h3>Ingredients</h3><p>Witch hazel infused with local vanilla beans from Oʻahu's North Shore, organic peppermint leaf, organic lavender flowers.</p><h3>Size</h3><p>2 oz spray bottle. Fits a hiking pack or beach bag.</p>",
+      "weight_g": 57, "images": ["01-card.jpg", "02-card.jpg"], "regular_price": "15.50", "stock": 7
+    },
+    {
+      "slug": "diy-recipes-for-home-self-care", "name": "Naturally: DIY Recipes for Home and Self-Care", "type": "simple", "virtual": true, "downloadable": true,
+      "categories": ["digital"], "tags": ["download"], "menu_order": 40,
+      "short": "Thirteen of our own recipes for home and self-care, with cost comparisons and a list of clean brands we trust. PDF download.",
+      "description": "<p>The recipes we use at home, written down properly. Thirteen of them, each with a cost comparison against the store-bought version and a short list of brands we buy when we do not make it ourselves.</p><p>Delivered as a PDF after checkout.</p>",
+      "weight_g": 0, "images": [], "regular_price": "10.00", "stock": null,
+      "_src_dir": "naturally-digital-download",
+      "_todo": "Upload the PDF to the product's downloadable files before publishing."
+    }
+  ],
+  "coupons": [
+    { "code": "WELCOME10", "type": "percent", "amount": "10", "usage_limit_per_user": 1, "description": "Newsletter welcome code." },
+    { "code": "THREE", "type": "percent", "amount": "10", "minimum_amount": "36", "product_categories": ["deodorant", "blakbird"], "description": "Any three deodorants, 10% off." },
+    { "code": "REBRAND", "type": "percent", "amount": "20", "description": "Launch win-back for past customers, 10 days.", "expiry_days": 10 },
+    { "code": "rewild", "type": "percent", "amount": "10", "description": "Creator code carried over from Shopify (125 orders)." }
+  ],
+  "skipped": [
+    { "handle": "blubird-naturals-gift-card", "why": "WooCommerce has no native gift cards. Install PW WooCommerce Gift Cards (free) and create denominations $10/$25/$50/$100; the redirect map points the old URL at /gift-card/." }
+  ]
+}
